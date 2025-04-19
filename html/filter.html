@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Knowledge Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap");
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+      }
+      .focus-visible:focus-visible {
+        outline: 2px solid #0284c7;
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body class="overflow-hidden bg-neutral-100">
+    <header
+      class="flex flex-wrap gap-5 justify-between px-20 w-full bg-sky-200 shadow-[0px_4px_4px_rgba(0,0,0,0.25)] max-md:px-5 max-md:max-w-full"
+      role="banner"
+    >
+      <div class="flex gap-5 text-center whitespace-nowrap">
+        <button
+          class="px-7 py-2.5 my-auto text-xs text-black bg-zinc-300 max-md:px-5 focus-visible"
+          aria-label="タイトル画像"
+        >
+          タイトル画像
+        </button>
+        <nav
+          class="flex flex-auto text-sm font-bold leading-6 text-zinc-800"
+          aria-label="Main Navigation"
+        >
+          <a
+            href="#"
+            class="px-3 py-4 bg-sky-200 border-b-2 border-sky-600 text-zinc-800 focus-visible"
+            aria-current="page"
+          >
+            ホーム
+          </a>
+          <a href="#" class="px-3 py-4 bg-sky-200 focus-visible"> 図書一覧 </a>
+          <a href="#" class="flex gap-1 px-3 py-4 bg-sky-200 focus-visible">
+            <span>AIナレッジポータル</span>
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/87d7ad5959425e5f750035af6ed2aebbb991af79?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+              class="object-contain shrink-0 my-auto w-3.5 aspect-square"
+              alt="ドロップダウンアイコン"
+            />
+          </a>
+        </nav>
+      </div>
+      <div class="flex flex-wrap gap-4 my-auto max-md:max-w-full">
+        <div
+          class="flex gap-2 items-start px-2.5 py-2 text-sm font-medium tracking-wider leading-relaxed text-center whitespace-nowrap bg-gray-200 rounded-lg text-stone-500"
+        >
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/085a37c2b9024c6678bf85d38368fa49f16fd041?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+            class="object-contain shrink-0 self-start aspect-square w-[18px]"
+            alt="検索アイコン"
+          />
+          <span class="flex-auto my-auto">Search</span>
+        </div>
+        <button
+          class="flex gap-2.5 justify-center items-center px-1 w-8 h-8 rounded-2xl bg-neutral-400 min-h-8 focus-visible"
+          aria-label="アクション"
+        >
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/50f236f75e918b1b6e84fc700e933dbf556869ba?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+            class="object-contain self-stretch my-auto w-6 aspect-square"
+            alt="アクションアイコン"
+          />
+        </button>
+        <button
+          class="flex gap-1.5 px-4 py-2 text-sm font-bold leading-none text-center text-white whitespace-nowrap bg-sky-600 rounded-lg focus-visible"
+        >
+          <span>投稿する</span>
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/78c4b29476f3525a6223ed507891beb135699ea0?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+            class="object-contain shrink-0 self-start w-4 aspect-square"
+            alt="投稿アイコン"
+          />
+        </button>
+      </div>
+    </header>
+
+    <main
+      class="flex relative z-10 flex-col items-center px-20 pt-20 pb-7 mt-0 w-full min-h-[1023px] max-md:px-5 max-md:max-w-full"
+      role="main"
+    >
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/55422a6dfc4f6d5815df92afe174895bdd88e221?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+        class="object-cover absolute inset-0 size-full"
+        alt="背景画像"
+      />
+
+      <section
+        class="flex relative flex-wrap gap-5 justify-between w-full text-sm font-bold text-center whitespace-nowrap max-w-[1232px] max-md:max-w-full"
+        aria-labelledby="ranking-title"
+      >
+        <div class="flex flex-wrap gap-10 items-end max-md:max-w-full">
+          <h1
+            id="ranking-title"
+            class="flex gap-1 mt-8 leading-none text-zinc-800"
+          >
+            <span>閲覧数ランキング</span>
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/6ec9bfefded34a9c687d02b2ce02c1d5b1397f89?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+              class="object-contain shrink-0 w-4 aspect-square"
+              alt="ランキングアイコン"
+            />
+          </h1>
+
+          <div
+            class="flex gap-2 mt-8 text-xs leading-none"
+            role="tablist"
+            aria-label="期間選択"
+          >
+            <button
+              class="text-zinc-800 focus-visible"
+              role="tab"
+              aria-selected="true"
+              aria-controls="weekly-content"
+            >
+              週間
+            </button>
+            <button
+              class="text-stone-500 focus-visible"
+              role="tab"
+              aria-selected="false"
+              aria-controls="monthly-content"
+            >
+              月間
+            </button>
+          </div>
+
+          <div
+            class="flex self-start leading-6 text-zinc-800"
+            role="tablist"
+            aria-label="コンテンツフィルター"
+          >
+            <button
+              class="px-9 py-2 text-sky-600 bg-white border-b border-sky-600 max-md:px-5 focus-visible"
+              role="tab"
+              aria-selected="true"
+            >
+              すべて
+            </button>
+            <button
+              class="gap-2.5 self-stretch px-7 py-2 bg-white min-h-10 max-md:px-5 focus-visible"
+              role="tab"
+              aria-selected="false"
+            >
+              トレンド
+            </button>
+            <button
+              class="gap-2.5 self-stretch px-5 py-2 bg-white min-h-10 max-md:px-5 focus-visible"
+              role="tab"
+              aria-selected="false"
+            >
+              お気に入り
+            </button>
+          </div>
+        </div>
+
+        <div class="flex gap-4 self-start mt-1 leading-6">
+          <button
+            class="flex gap-1.5 px-4 py-1 bg-white rounded-lg border border-solid border-neutral-200 text-zinc-800 focus-visible"
+          >
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/9ce9d398372943c9e22d9e405fabffb70785c62e?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+              class="object-contain shrink-0 my-auto w-3.5 aspect-[1.17]"
+              alt="新着順アイコン"
+            />
+            <span>新着順</span>
+          </button>
+          <button
+            class="flex gap-1 px-4 py-1 text-white rounded-lg bg-neutral-400 focus-visible"
+          >
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/4452858033e3604e3061e00b65e2b015f3dc3a82?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+              class="object-contain shrink-0 my-auto w-4 aspect-square"
+              alt="フィルターアイコン"
+            />
+            <span>フィルター</span>
+          </button>
+        </div>
+      </section>
+
+      <section
+        class="relative mt-2.5 w-full max-w-[1246px] max-md:max-w-full"
+        aria-label="コンテンツエリア"
+        space="48"
+      >
+        <div class="flex gap-5 max-md:flex-col">
+          <aside
+            class="w-[23%] max-md:ml-0 max-md:w-full"
+            aria-labelledby="ranking-list"
+          >
+            <h2 id="ranking-list" class="sr-only">閲覧数ランキングリスト</h2>
+            <div class="relative w-full max-md:mt-10">
+              <article
+                class="flex gap-3 p-3.5 bg-white rounded-lg"
+                aria-labelledby="article-title-1"
+              >
+                <span
+                  class="grow self-start text-sm font-bold leading-6 text-center text-yellow-600"
+                  aria-label="ランキング1位"
+                >
+                  1
+                </span>
+                <div class="flex flex-wrap gap-1.5 items-end w-full">
+                  <div
+                    class="flex flex-col grow shrink text-zinc-800 w-[219px]"
+                  >
+                    <div class="flex flex-col w-full">
+                      <h3
+                        id="article-title-1"
+                        class="text-sm font-bold tracking-wider leading-5"
+                      >
+                        VScodeでPtyhonを使えるようにする for Windows
+                      </h3>
+                      <div
+                        class="flex gap-1 items-center self-start mt-2.5 text-xs text-center whitespace-nowrap"
+                      >
+                        <span
+                          class="self-stretch px-1 my-auto h-4 bg-gray-200 rounded"
+                        >
+                          python
+                        </span>
+                        <span
+                          class="self-stretch px-1 my-auto h-4 bg-gray-200 rounded"
+                        >
+                          Step1
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      class="flex gap-3 items-center self-start mt-1.5 text-xs font-medium tracking-normal text-center whitespace-nowrap"
+                    >
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/b6f889c61d9d4af4035f773f0f82a756e61ffe2f?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="閲覧数アイコン"
+                        />
+                        <span class="self-stretch my-auto"> 110 </span>
+                      </div>
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/4414724bbd8be4bf7f536e97abf3a6cfb4d05a9b?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="いいねアイコン"
+                        />
+                        <span class="self-stretch my-auto"> 50 </span>
+                      </div>
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/8840d5e7ddc65312cc2dda38c67ef37a7ffe9b81?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="ブックマークアイコン"
+                        />
+                        <span class="self-stretch my-auto"> 110 </span>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    class="flex gap-2.5 justify-center items-center px-1 w-8 h-8 rounded-2xl bg-neutral-400 min-h-8 focus-visible"
+                    aria-label="アクション"
+                  >
+                    <img
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/50f236f75e918b1b6e84fc700e933dbf556869ba?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                      class="object-contain self-stretch my-auto w-6 aspect-square"
+                      alt="アクションアイコン"
+                    />
+                  </button>
+                  <div
+                    class="flex flex-col grow shrink items-start py-0.5 pr-6 text-xs text-zinc-800 w-[181px]"
+                  >
+                    <span class="z-10 leading-none">
+                      Shirota Ayaka-7-0/やっか/城田...
+                    </span>
+                    <time datetime="2025-01-31" class="mt-1.5 leading-none">
+                      2025年01月31日
+                    </time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="flex gap-3 px-3.5 py-3.5 mt-2 bg-white rounded-lg"
+                aria-labelledby="article-title-2"
+              >
+                <span
+                  class="grow self-start text-sm font-bold leading-6 text-center text-neutral-600"
+                  aria-label="ランキング2位"
+                >
+                  2
+                </span>
+                <div class="flex flex-wrap gap-1.5 items-end w-full">
+                  <div
+                    class="flex flex-col grow shrink text-zinc-800 w-[219px]"
+                  >
+                    <div class="flex flex-col w-full">
+                      <h3
+                        id="article-title-2"
+                        class="text-sm font-bold tracking-wider leading-5"
+                      >
+                        VScodeでPtyhonを使えるようにする for Windows
+                      </h3>
+                      <div
+                        class="flex gap-1 items-center self-start mt-2.5 text-xs text-center whitespace-nowrap"
+                      >
+                        <span
+                          class="self-stretch px-1 my-auto h-4 bg-gray-200 rounded"
+                        >
+                          python
+                        </span>
+                        <span
+                          class="self-stretch px-1 my-auto h-4 bg-gray-200 rounded"
+                        >
+                          Step1
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      class="flex gap-3 items-center self-start mt-1.5 text-xs font-medium tracking-normal text-center whitespace-nowrap"
+                    >
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/b6f889c61d9d4af4035f773f0f82a756e61ffe2f?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="閲覧数アイコン"
+                        />
+                        <span class="self-stretch my-auto"> 110 </span>
+                      </div>
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/4414724bbd8be4bf7f536e97abf3a6cfb4d05a9b?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="いいねアイコン"
+                        />
+                        <span class="self-stretch my-auto"> 50 </span>
+                      </div>
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/8840d5e7ddc65312cc2dda38c67ef37a7ffe9b81?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="ブックマークアイコン"
+                        />
+                        <span class="self-stretch my-auto"> 110 </span>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    class="flex gap-2.5 justify-center items-center px-1 w-8 h-8 rounded-2xl bg-neutral-400 min-h-8 focus-visible"
+                    aria-label="アクション"
+                  >
+                    <img
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/50f236f75e918b1b6e84fc700e933dbf556869ba?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                      class="object-contain self-stretch my-auto w-6 aspect-square"
+                      alt="アクションアイコン"
+                    />
+                  </button>
+                  <div
+                    class="flex flex-col grow shrink items-start py-0.5 pr-6 text-xs text-zinc-800 w-[181px]"
+                  >
+                    <span class="z-10 leading-none">
+                      Shirota Ayaka-7-0/やっか/城田...
+                    </span>
+                    <time datetime="2025-01-31" class="mt-1.5 leading-none">
+                      2025年01月31日
+                    </time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="flex gap-3 px-3.5 py-3.5 mt-2 w-full bg-white rounded-lg shadow-[0px_1px_1px_rgba(30,33,33,0.25)]"
+                aria-labelledby="article-title-3"
+              >
+                <span
+                  class="grow self-start text-sm font-bold leading-6 text-center text-yellow-900"
+                  aria-label="ランキング3位"
+                >
+                  3
+                </span>
+                <div class="flex flex-wrap gap-1.5 items-end">
+                  <div
+                    class="flex flex-col grow shrink text-zinc-800 w-[219px]"
+                  >
+                    <div class="flex flex-col w-full">
+                      <h3
+                        id="article-title-3"
+                        class="text-sm font-bold tracking-wider leading-5"
+                      >
+                        VScodeでPtyhonを使えるようにする for Windows
+                      </h3>
+                      <div
+                        class="flex gap-1 items-center self-start mt-2.5 text-xs text-center whitespace-nowrap"
+                      >
+                        <span
+                          class="self-stretch px-1 my-auto h-4 bg-gray-200 rounded"
+                        >
+                          python
+                        </span>
+                        <span
+                          class="self-stretch px-1 my-auto h-4 bg-gray-200 rounded"
+                        >
+                          Step1
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      class="flex gap-3 items-center self-start mt-1.5 text-xs font-medium tracking-normal text-center whitespace-nowrap"
+                    >
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/b6f889c61d9d4af4035f773f0f82a756e61ffe2f?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="閲覧数アイコン"
+                        />
+                        <span class="self-stretch my-auto"> 110 </span>
+                      </div>
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/4414724bbd8be4bf7f536e97abf3a6cfb4d05a9b?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="いいねアイコン"
+                        />
+                        <span class="self-stretch my-auto"> 50 </span>
+                      </div>
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/8840d5e7ddc65312cc2dda38c67ef37a7ffe9b81?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="ブックマークアイコン"
+                        />
+                        <span class="self-stretch my-auto"> 110 </span>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    class="flex gap-2.5 justify-center items-center px-1 w-8 h-8 rounded-2xl bg-neutral-400 min-h-8 focus-visible"
+                    aria-label="アクション"
+                  >
+                    <img
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/50f236f75e918b1b6e84fc700e933dbf556869ba?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                      class="object-contain self-stretch my-auto w-6 aspect-square"
+                      alt="アクションアイコン"
+                    />
+                  </button>
+                  <div
+                    class="flex flex-col grow shrink items-start py-0.5 pr-6 text-xs text-zinc-800 w-[181px]"
+                  >
+                    <span class="z-10 leading-none">
+                      Shirota Ayaka-7-0/やっか/城田...
+                    </span>
+                    <time datetime="2025-01-31" class="mt-1.5 leading-none">
+                      2025年01月31日
+                    </time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="flex gap-3 px-3.5 py-3.5 mt-2 w-full bg-white rounded-lg shadow-[0px_1px_1px_rgba(30,33,33,0.25)]"
+                aria-labelledby="article-title-4"
+              >
+                <span
+                  class="grow self-start text-sm font-bold leading-6 text-center text-zinc-800"
+                  aria-label="ランキング4位"
+                >
+                  4
+                </span>
+                <div class="flex flex-wrap gap-1.5 items-end">
+                  <div
+                    class="flex flex-col grow shrink text-zinc-800 w-[219px]"
+                  >
+                    <div class="flex flex-col w-full">
+                      <h3
+                        id="article-title-4"
+                        class="text-sm font-bold tracking-wider leading-5"
+                      >
+                        VScodeでPtyhonを使えるようにする for Windows
+                      </h3>
+                      <div
+                        class="flex gap-1 items-center self-start mt-2.5 text-xs text-center whitespace-nowrap"
+                      >
+                        <span
+                          class="self-stretch px-1 my-auto h-4 bg-gray-200 rounded"
+                        >
+                          python
+                        </span>
+                        <span
+                          class="self-stretch px-1 my-auto h-4 bg-gray-200 rounded"
+                        >
+                          Step1
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      class="flex gap-3 items-center self-start mt-1.5 text-xs font-medium tracking-normal text-center whitespace-nowrap"
+                    >
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/b6f889c61d9d4af4035f773f0f82a756e61ffe2f?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="閲覧数アイコン"
+                        />
+                        <span class="self-stretch my-auto"> 110 </span>
+                      </div>
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/4414724bbd8be4bf7f536e97abf3a6cfb4d05a9b?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="いいねアイコン"
+                        />
+                        <span class="self-stretch my-auto"> 50 </span>
+                      </div>
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/8840d5e7ddc65312cc2dda38c67ef37a7ffe9b81?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="ブックマークアイコン"
+                        />
+                        <span class="self-stretch my-auto"> 110 </span>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    class="flex gap-2.5 justify-center items-center px-1 w-8 h-8 rounded-2xl bg-neutral-400 min-h-8 focus-visible"
+                    aria-label="アクション"
+                  >
+                    <img
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/50f236f75e918b1b6e84fc700e933dbf556869ba?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                      class="object-contain self-stretch my-auto w-6 aspect-square"
+                      alt="アクションアイコン"
+                    />
+                  </button>
+                  <div
+                    class="flex flex-col grow shrink items-start py-0.5 pr-6 text-xs text-zinc-800 w-[181px]"
+                  >
+                    <span class="z-10 leading-none">
+                      Shirota Ayaka-7-0/やっか/城田...
+                    </span>
+                    <time datetime="2025-01-31" class="mt-1.5 leading-none">
+                      2025年01月31日
+                    </time>
+                  </div>
+                </div>
+              </article>
+
+              <article
+                class="flex gap-3 px-3.5 py-3.5 mt-2 w-full bg-white rounded-lg shadow-[0px_1px_1px_rgba(30,33,33,0.25)]"
+                aria-labelledby="article-title-5"
+              >
+                <span
+                  class="grow self-start text-sm font-bold leading-6 text-center text-zinc-800"
+                  aria-label="ランキング5位"
+                >
+                  5
+                </span>
+                <div class="flex flex-wrap gap-1.5 items-end">
+                  <div
+                    class="flex flex-col grow shrink text-zinc-800 w-[219px]"
+                  >
+                    <div class="flex flex-col w-full">
+                      <h3
+                        id="article-title-5"
+                        class="text-sm font-bold tracking-wider leading-5"
+                      >
+                        VScodeでPtyhonを使えるようにする for Windows
+                      </h3>
+                      <div
+                        class="flex gap-1 items-center self-start mt-2.5 text-xs text-center whitespace-nowrap"
+                      >
+                        <span
+                          class="self-stretch px-1 my-auto h-4 bg-gray-200 rounded"
+                        >
+                          python
+                        </span>
+                        <span
+                          class="self-stretch px-1 my-auto h-4 bg-gray-200 rounded"
+                        >
+                          Step1
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      class="flex gap-3 items-center self-start mt-1.5 text-xs font-medium tracking-normal text-center whitespace-nowrap"
+                    >
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/b6f889c61d9d4af4035f773f0f82a756e61ffe2f?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="閲覧数アイコン"
+                        />
+                        <span class="self-stretch my-auto"> 110 </span>
+                      </div>
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/4414724bbd8be4bf7f536e97abf3a6cfb4d05a9b?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="いいねアイコン"
+                        />
+                        <span class="self-stretch my-auto"> 50 </span>
+                      </div>
+                      <div class="flex gap-1 items-center self-stretch my-auto">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/8840d5e7ddc65312cc2dda38c67ef37a7ffe9b81?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                          class="object-contain shrink-0 self-stretch my-auto w-3 aspect-square"
+                          alt="ブックマークアイコン"
+                        />
+                        <span class="self-stretch my-auto"> 110 </span>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    class="flex gap-2.5 justify-center items-center px-1 w-8 h-8 rounded-2xl bg-neutral-400 min-h-8 focus-visible"
+                    aria-label="アクション"
+                  >
+                    <img
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/50f236f75e918b1b6e84fc700e933dbf556869ba?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                      class="object-contain self-stretch my-auto w-6 aspect-square"
+                      alt="アクションアイコン"
+                    />
+                  </button>
+                  <div
+                    class="flex flex-col grow shrink items-start py-0.5 pr-6 text-xs text-zinc-800 w-[181px]"
+                  >
+                    <span class="z-10 leading-none">
+                      Shirota Ayaka-7-0/やっか/城田...
+                    </span>
+                    <time datetime="2025-01-31" class="mt-1.5 leading-none">
+                      2025年01月31日
+                    </time>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </aside>
+
+          <section
+            class="ml-5 w-[77%] max-md:ml-0 max-md:w-full"
+            aria-label="メインコンテンツエリア"
+          >
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/61ff44d096d837c0631f3d768604dfaab1ed783e?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+              class="object-contain grow w-full rounded-lg aspect-[1.06] shadow-[4px_4px_4px_rgba(0,0,0,0.25)] max-md:mt-10 max-md:max-w-full"
+              alt="メインコンテンツ画像"
+            />
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (() => {
+        const state = {};
+
+        let context = null;
+        let nodesToDestroy = [];
+        let pendingUpdate = false;
+
+        function destroyAnyNodes() {
+          // destroy current view template refs before rendering again
+          nodesToDestroy.forEach((el) => el.remove());
+          nodesToDestroy = [];
+        }
+
+        // Function to update data bindings and loops
+        // call update() when you mutate state and need the updates to reflect
+        // in the dom
+        function update() {
+          if (pendingUpdate === true) {
+            return;
+          }
+          pendingUpdate = true;
+
+          document.querySelectorAll("[space]").forEach((el) => {
+            el.setAttribute("space", 48);
+          });
+
+          destroyAnyNodes();
+
+          pendingUpdate = false;
+        }
+
+        // Update with initial state on first load
+        update();
+      })();
+    </script>
+  </body>
+</html>
