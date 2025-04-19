@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Knowledge Portal - Article Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div
+      class="flex overflow-hidden flex-col items-center pb-16 bg-neutral-100"
+    >
+      <!-- Navigation Header -->
+      <header
+        class="flex flex-wrap gap-5 justify-between self-stretch px-20 w-full bg-sky-200 shadow-[0px_4px_4px_rgba(0,0,0,0.25)] max-md:px-5 max-md:max-w-full"
+        role="banner"
+      >
+        <nav
+          class="flex gap-3 items-center text-sm font-bold text-center whitespace-nowrap"
+          aria-label="Main Navigation"
+        >
+          <div
+            class="self-stretch px-7 py-2.5 my-auto text-xs text-black bg-zinc-300 max-md:px-5"
+          >
+            タイトル画像
+          </div>
+          <a
+            href="#"
+            class="self-stretch my-auto leading-6 text-gray-500"
+            aria-current="page"
+          >
+            ホーム
+          </a>
+          <div class="flex self-stretch leading-6 text-zinc-800">
+            <a href="#" class="px-3 py-4 bg-sky-200">図書一覧</a>
+            <div class="flex gap-1 px-3 py-4 bg-sky-200">
+              <span class="grow">AIナレッジポータル</span>
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/87d7ad5959425e5f750035af6ed2aebbb991af79?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                class="object-contain shrink-0 my-auto w-3.5 aspect-square"
+                alt="Dropdown icon"
+              />
+            </div>
+          </div>
+        </nav>
+        <div class="flex flex-wrap gap-4 my-auto max-md:max-w-full">
+          <div
+            class="flex gap-2 items-start px-2.5 py-2 text-sm font-medium tracking-wider leading-relaxed text-center whitespace-nowrap bg-gray-200 rounded-lg text-stone-500"
+          >
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/085a37c2b9024c6678bf85d38368fa49f16fd041?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+              class="object-contain shrink-0 self-start aspect-square w-[18px]"
+              alt="Search icon"
+            />
+            <span class="flex-auto my-auto">Search</span>
+          </div>
+          <button
+            class="flex gap-2.5 justify-center items-center px-1 w-8 h-8 rounded-2xl bg-neutral-400 min-h-8"
+            aria-label="User profile"
+          >
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/50f236f75e918b1b6e84fc700e933dbf556869ba?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+              class="object-contain self-stretch my-auto w-6 aspect-square"
+              alt="User profile icon"
+            />
+          </button>
+          <button
+            class="flex gap-1.5 px-4 py-2 text-sm font-bold leading-none text-center text-white whitespace-nowrap bg-sky-600 rounded-lg"
+            aria-label="Create post"
+          >
+            <span class="grow">投稿する</span>
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/78c4b29476f3525a6223ed507891beb135699ea0?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+              class="object-contain shrink-0 self-start w-4 aspect-square"
+              alt="Create post icon"
+            />
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main
+        class="flex flex-wrap gap-10 mt-4 w-full max-w-[1246px] max-md:max-w-full"
+      >
+        <aside>
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/6d13fa47a4c0ef68908eeadbb6b34d197522d701?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+            class="object-contain shrink-0 self-start mt-1.5 w-10 aspect-[0.27]"
+            alt="Sidebar decoration"
+          />
+        </aside>
+
+        <article
+          class="flex flex-col grow shrink-0 items-start px-14 py-9 bg-white rounded-lg basis-0 w-fit max-md:px-5 max-md:max-w-full"
+        >
+          <!-- Article Header -->
+          <div class="flex gap-2">
+            <div
+              class="flex gap-2.5 justify-center items-center px-1 w-8 h-8 rounded-2xl bg-neutral-400 min-h-8"
+            >
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/50f236f75e918b1b6e84fc700e933dbf556869ba?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                class="object-contain self-stretch my-auto w-6 aspect-square"
+                alt="Author avatar"
+              />
+            </div>
+            <div
+              class="flex-auto my-auto text-base font-bold leading-none text-center text-zinc-800"
+            >
+              Shirota Ayaka-7-0/やっか/城田綾香
+            </div>
+          </div>
+
+          <h1
+            class="mt-3 text-3xl font-bold tracking-wider leading-none text-zinc-800 max-md:max-w-full"
+          >
+            VScodeでPtyhonを使えるようにする for Windows
+          </h1>
+
+          <div
+            class="flex gap-1 items-center mt-5 text-sm tracking-wider leading-none text-center whitespace-nowrap text-zinc-800"
+          >
+            <span class="flex items-start self-stretch my-auto">
+              <span
+                class="gap-2.5 self-stretch px-1.5 bg-gray-200 rounded min-h-5"
+              >
+                python
+              </span>
+            </span>
+            <span class="flex items-start self-stretch my-auto">
+              <span
+                class="gap-2.5 self-stretch px-1.5 bg-gray-200 rounded min-h-5"
+              >
+                Step1
+              </span>
+            </span>
+          </div>
+
+          <div
+            class="flex gap-1 mt-3 text-xs leading-none whitespace-nowrap text-zinc-800"
+          >
+            <span>投稿日</span>
+            <time datetime="2025-01-31">2025年01月31日</time>
+          </div>
+
+          <!-- Article Content -->
+          <h2
+            class="mt-14 text-3xl font-bold tracking-wider leading-none text-zinc-800 max-md:mt-10"
+          >
+            pythonのver.確認とver.更新
+          </h2>
+
+          <div
+            class="self-stretch mt-5 text-lg tracking-wider leading-7 text-zinc-800 max-md:mr-2.5 max-md:max-w-full"
+          >
+            <ul>
+              <li>
+                <a
+                  href="https://kamesuke-blog.com/programming/python_version/"
+                  style="
+                    text-decoration: underline;
+                    color: rgba(0, 102, 192, 1);
+                  "
+                  target="_blank"
+                  rel="noopener"
+                >
+                  https://kamesuke-blog.com/programming/python_version/
+                </a>
+                ※ver.更新の部分は記事の通りにできなかったため、下記の通り色々触りながら更新しました。イマイチ良く分からないまま更新できてしまった節もあるので、上手くいかなかった場合は申し訳ありません。
+              </li>
+              <li>
+                ダウンロードしたpythonどこにあんねん？Userフォルダーの中にAppDataのファイル無いんだが？となった人は隠しファイルを表示する設定にする
+                <a
+                  href="https://www.jaskun.com/windows10/win10-appdata/"
+                  style="
+                    text-decoration: underline;
+                    color: rgba(0, 102, 192, 1);
+                  "
+                  target="_blank"
+                  rel="noopener"
+                >
+                  https://www.jaskun.com/windows10/win10-appdata/
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <h2
+            class="mt-14 text-3xl font-bold tracking-wider leading-none text-zinc-800 max-md:mt-10"
+          >
+            ver.更新
+          </h2>
+
+          <div
+            class="self-stretch mt-5 text-lg tracking-wider leading-7 text-zinc-800 max-md:max-w-full"
+          >
+            画面右下のver.をクリックする。画像では「3.11.9」。
+            ※.pyファイルを開いている時しか右下にver.が表示されません。
+            <br />
+            インタープリターの選択という項目が画面中央上部に開くので、「インタープリターパスを入力」を選択する
+            <br />
+            「検索…ファイルシステムを参照してPythonインタープリターを検索します」を選択する
+            <br />
+            Pythonファイルをインストールしているところまで行って、python.exeファイルを選択する
+            <br />
+            選択したpythonのverを選択できるようになっているはず
+            <br />
+            python 3.9.13
+            (anaconda)があるのは、以前Udemyを受講した際にanacondaを入れていたから
+          </div>
+        </article>
+      </main>
+
+      <!-- Comments Section -->
+      <section
+        class="flex flex-col px-3.5 py-8 mt-6 ml-12 w-full bg-white rounded-lg max-w-[1150px] max-md:max-w-full"
+        aria-labelledby="comments-heading"
+      >
+        <h2
+          id="comments-heading"
+          class="self-start ml-12 text-3xl font-bold tracking-wider leading-none text-zinc-800 max-md:ml-2.5"
+        >
+          コメント
+        </h2>
+
+        <hr
+          class="object-contain mt-3.5 w-full max-md:mr-1 max-md:max-w-full"
+          aria-hidden="true"
+        />
+
+        <!-- First Comment -->
+        <article class="comment mt-4">
+          <header
+            class="flex flex-wrap gap-5 justify-between self-center w-full max-w-[1022px] max-md:max-w-full"
+          >
+            <div class="flex gap-2">
+              <div
+                class="flex gap-2.5 justify-center items-center px-1 w-8 h-8 rounded-2xl bg-neutral-400 min-h-8"
+              >
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/50f236f75e918b1b6e84fc700e933dbf556869ba?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                  class="object-contain self-stretch my-auto w-6 aspect-square"
+                  alt="Commenter avatar"
+                />
+              </div>
+              <div
+                class="flex-auto my-auto text-base font-bold leading-none text-center text-zinc-800"
+              >
+                Yamakawa Yuki-6-0/やまちゃん/山川 裕生
+              </div>
+            </div>
+            <div
+              class="flex gap-1 my-auto text-sm leading-none whitespace-nowrap text-zinc-800"
+            >
+              <time datetime="2025-01-31" class="grow">2025年1月31日</time>
+              <span>12:30</span>
+            </div>
+          </header>
+
+          <div
+            class="self-center mt-4 text-lg tracking-wider leading-7 text-zinc-800 max-md:max-w-full"
+          >
+            Pythonの基礎を学び始めたけど、どんなことができるのかイメージできていない。という私と同じ方ぎらっしゃいましたら、少し尺長めですが、イメージが少しつきます。最終ゴール的なものが把握できていると、実際の業務の改革・改善する青写真が描ける気がします。
+          </div>
+
+          <button
+            class="flex gap-2 self-start mt-4 ml-11 text-sm leading-none text-center whitespace-nowrap text-zinc-800 max-md:ml-2.5"
+            aria-label="Like comment"
+          >
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/fe0160688309a69ec76bee2d91c9d22ea1cfa88d?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+              class="object-contain shrink-0 w-full aspect-square"
+              alt="Like icon"
+            />
+            <span class="my-auto">4</span>
+          </button>
+        </article>
+
+        <hr
+          class="object-contain mt-5 w-full max-md:max-w-full"
+          aria-hidden="true"
+        />
+
+        <!-- Second Comment -->
+        <article class="comment mt-4">
+          <header
+            class="flex flex-wrap gap-5 justify-between self-center w-full max-w-[1022px] max-md:max-w-full"
+          >
+            <div class="flex gap-2">
+              <div
+                class="flex gap-2.5 justify-center items-center px-1 w-8 h-8 rounded-2xl bg-neutral-400 min-h-8"
+              >
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/50f236f75e918b1b6e84fc700e933dbf556869ba?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+                  class="object-contain self-stretch my-auto w-6 aspect-square"
+                  alt="Commenter avatar"
+                />
+              </div>
+              <div
+                class="flex-auto my-auto text-base font-bold leading-none text-center text-zinc-800"
+              >
+                Yamakawa Yuki-6-0/やまちゃん/山川 裕生
+              </div>
+            </div>
+            <div
+              class="flex gap-1 my-auto text-sm leading-none whitespace-nowrap text-zinc-800"
+            >
+              <time datetime="2025-01-31" class="grow">2025年1月31日</time>
+              <span>12:30</span>
+            </div>
+          </header>
+
+          <div
+            class="self-center mt-4 text-lg tracking-wider leading-7 text-zinc-800 max-md:max-w-full"
+          >
+            Pythonの基礎を学び始めたけど、どんなことができるのかイメージできていない。という私と同じ方ぎらっしゃいましたら、少し尺長めですが、イメージが少しつきます。最終ゴール的なものが把握できていると、実際の業務の改革・改善する青写真が描ける気がします。
+          </div>
+
+          <button
+            class="flex gap-2 self-start mt-4 ml-11 text-sm leading-none text-center whitespace-nowrap text-zinc-800 max-md:ml-2.5"
+            aria-label="Like comment"
+          >
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/fe0160688309a69ec76bee2d91c9d22ea1cfa88d?placeholderIfAbsent=true&apiKey=ccf579e70fdb44338731cfbc68ca429f"
+              class="object-contain shrink-0 aspect-square w-[18px]"
+              alt="Like icon"
+            />
+            <span class="my-auto">15</span>
+          </button>
+        </article>
+      </section>
+
+      <!-- Comment Form Section -->
+      <section
+        class="flex flex-col px-14 py-8 mt-8 ml-12 w-full whitespace-nowrap bg-white rounded-lg max-w-[1150px] max-md:px-5 max-md:max-w-full"
+        aria-labelledby="comment-form-heading"
+      >
+        <h2
+          id="comment-form-heading"
+          class="self-start text-3xl font-bold tracking-wider leading-none text-zinc-800 max-md:ml-2"
+        >
+          コメントする
+        </h2>
+
+        <form
+          class="flex flex-col px-8 py-5 mt-4 bg-white rounded-lg border border-gray-200 border-solid max-md:px-5 max-md:max-w-full"
+        >
+          <label for="comment-text" class="sr-only">コメント</label>
+          <textarea
+            id="comment-text"
+            class="self-start w-full h-32 text-lg tracking-wider leading-loose text-neutral-400 focus:outline-none focus:ring-2 focus:ring-sky-600 rounded-md p-2"
+            placeholder="テキストを入力"
+            aria-label="コメントを入力"
+          ></textarea>
+
+          <button
+            type="submit"
+            class="self-end px-5 py-2 mt-4 text-sm font-bold leading-none text-center text-white bg-sky-600 rounded-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-colors"
+          >
+            投稿する
+          </button>
+        </form>
+      </section>
+    </div>
+  </body>
+</html>
